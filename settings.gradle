@@ -1,0 +1,4 @@
+//include 'Simple2DGraphicsInterface'
+//project(':Simple2DGraphicsInterface').projectDir = file("../Simple2DGraphicsInterface")
+
+rootProject.name = 'S2dgiExtSwing'
