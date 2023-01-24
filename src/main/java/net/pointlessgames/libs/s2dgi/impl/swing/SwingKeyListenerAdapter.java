@@ -24,17 +24,21 @@ import net.pointlessgames.libs.s2dgi.key.IKeyListener;
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		inputCache.setKeyState(e.getKeyCode(), true);
-		for(IKeyListener keyListener : keyListeners) {
-			keyListener.onKeyPressed(e.getKeyCode());
+		if(!inputCache.isKeyDown(e.getKeyCode())) {
+			inputCache.setKeyState(e.getKeyCode(), true);
+			for(IKeyListener keyListener : keyListeners) {
+				keyListener.onKeyPressed(e.getKeyCode());
+			}
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		inputCache.setKeyState(e.getKeyCode(), false);
-		for(IKeyListener keyListener : keyListeners) {
-			keyListener.onKeyReleased(e.getKeyCode());
+		if(inputCache.isKeyDown(e.getKeyCode())) {
+			inputCache.setKeyState(e.getKeyCode(), false);
+			for(IKeyListener keyListener : keyListeners) {
+				keyListener.onKeyReleased(e.getKeyCode());
+			}
 		}
 	}
 
