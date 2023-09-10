@@ -55,6 +55,11 @@ import net.pointlessgames.libs.s2dgi.util.ImplementationUtil;
 				int rotations = ImplementationUtil.mod(quarterRotations, 4);
 				int width = origWidth;
 				int height = origHeight;
+				if(flipX || flipY) {
+					g2d.translate(x + (flipX ? width : 0), y + (flipY ? height : 0));
+					g2d.scale(flipX ? -1 : 1, flipY ? -1 : 1);
+					g2d.translate(-x, -y);
+				}
 				if(rotations != 0) {
 					if(!rotateDimensions && rotations%2 == 1) {
 						width = origHeight;
@@ -64,11 +69,6 @@ import net.pointlessgames.libs.s2dgi.util.ImplementationUtil;
 					int ymove = rotations == 2 ? height : (rotations == 3 ? width : 0);
 					g2d.translate(x+xmove, y+ymove);
 					g2d.rotate(rotations*Math.PI/2);
-					g2d.translate(-x, -y);
-				}
-				if(flipX || flipY) {
-					g2d.translate(x + (flipX ? width : 0), y + (flipY ? height : 0));
-					g2d.scale(flipX ? -1 : 1, flipY ? -1 : 1);
 					g2d.translate(-x, -y);
 				}
 				g2d.drawImage(bufferedImage, x, y, x + width, y + height, offsetX + sourceX, offsetY + sourceY, offsetX + sourceX + sourceWidth, offsetY + sourceY + sourceHeight, null);
