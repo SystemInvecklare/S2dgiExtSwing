@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'com.github.SystemInvecklare:Simple2DGraphicsInterface:v0.7'
+	implementation 'com.github.SystemInvecklare:Simple2DGraphicsInterface:v0.8'
 	//implementation project(":Simple2DGraphicsInterface")
 	
     // Use JUnit test framework
